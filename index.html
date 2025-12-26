@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>💗 Sana Bir Sorum Var</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Pacifico', cursive;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255,255,255,0.92);
+    padding: 40px 60px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 2s ease;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: #e60073;
+}
+
+p {
+    font-size: 1.8rem;
+    color: #444;
+    min-height: 60px;
+}
+
+.buttons {
+    margin-top: 25px;
+    display: none;
+    gap: 20px;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+#startBtn {
+    background: #e60073;
+    color: white;
+}
+
+#startBtn:hover {
+    background: #ff4d94;
+    transform: scale(1.1);
+}
+
+.yes {
+    background: #ff4d94;
+    color: white;
+}
+
+.no {
+    background: #999;
+    color: white;
+    position: relative;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 6s linear infinite;
+    color: rgba(255,0,100,0.6);
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1);}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>💗 Sana Bir Sorum Var</h1>
+    <p id="text"></p>
+    <button id="startBtn" onclick="start()">Hazırım ✨</button>
+
+    <div class="buttons" id="buttons">
+        <button class="yes" onclick="yes()">EVET 💖</button>
+        <button class="no" onmouseover="moveNo()">HAYIR 🙈</button>
+    </div>
+</div>
+
+<script>
+const messages = [
+    "ilysm my baby 💕",
+    "Benimle çıkar mısın? 💖"
+];
+
+let i = 0;
+
+function start() {
+    document.getElementById("startBtn").style.display = "none";
+    showMessage();
+}
+
+function showMessage() {
+    if (i < messages.length) {
+        document.getElementById("text").innerText = messages[i];
+        i++;
+        setTimeout(showMessage, 2000);
+    } else {
+        document.getElementById("buttons").style.display = "flex";
+    }
+}
+
+function yes() {
+    document.getElementById("text").innerText = "Yaa 🥹💗 Dünyanın en mutlu insanıyım!";
+    document.getElementById("buttons").style.display = "none";
+}
+
+function moveNo() {
+    const btn = document.querySelector(".no");
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "%";
+    btn.style.top = Math.random() * 80 + "%";
+}
+
+for (let i = 0; i < 30; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
